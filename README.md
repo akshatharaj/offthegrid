@@ -20,7 +20,7 @@ upcoming events, vendors showing in those events and such.
     $ . bin/activate
     $ pip install -U distribute
 
-### Install careermate and all its dependencies
+### Install offthegrid and all its dependencies
 
     $ cd ~/Code/offthegrid
     $ ./build.bash develop
