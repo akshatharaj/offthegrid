@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Vendors</h4>
+{% if object_list %}
+    <table style="font-size: 12px">
+        <tr>
+            <th>Name </th>
+            <th>Website </th>
+            <th>Cuisine </th>
+            <th>Appearances in last month </th>
+        </tr>
+        {% for vendor in object_list %}
+            <tr>
+                <td style="padding: 5px 30px"><a href={% url 'vendor-detail' vendor.id %}> {{ vendor.name }} </a></td>
+                <td style="padding: 0px 40px"> <a href={{ vendor.website }}> {{ vendor.website }}</a></td>
+                <td>{{ vendor.cuisine }}</td>
+                <td>{{ vendor.last_month_events }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% else %}
+    <p>No Vendors found!!! :(</p>
+{% endif %}
+{% endblock content %}

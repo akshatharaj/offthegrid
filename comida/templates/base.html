@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>{% block head_title %}Off the Grid SF{% endblock %}</title>
+    </head>
+    <body style="vertical-align: middle, display: table-cell">
+        <img src="http://www.marinatimes.com/1110/nugget.jpg"></img>
+            <br/>
+            <a href={% url 'event-list' %}> 
+        	<span style="font-size: 10px"> Go to upcoming events listing </span>
+            </a>
+            <br/>
+            <a href={% url 'vendor-list' %}>
+                <span style="font-size: 10px"> Go to vendor listing </span>
+            </a>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>
+

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% if object_list %}
+    <table id="events" style="font-size: 12px">
+    	<tr>
+    		<th>What's coming up </th>
+    		<th>Starts at </th>
+    		<th> Ends at </th>
+    	</tr>
+        {% for event in object_list %}
+            <tr>
+                <td style="padding: 5px 20px"><a href={% url 'event-detail' event.id %}> 
+                	<span>{{ event.name }} </span></a>
+                </td>
+                <td style="padding: 0px 40px">{{ event.start_time }}</td>
+                <td>{{ event.end_time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% else %}
+    <p>No events found!!! :(</p>
+{% endif %}
+{% endblock content %}

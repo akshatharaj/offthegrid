@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<p><img src="{{ object.logo }}"/></p>
+<p><b>{{ object.name }}</b></p>
+<p>Cuisine: {{ object.cuisine }}</p>
+<p>Website: {{ object.website}}</p>
+<p>Appearances in last 30 days: </p>
+
+<div style="width: 700px">
+{% if events %}
+    <ul>
+        {% for event in events %}
+            <li style="font-size: 12px"> <a href={% url 'event-detail' event.id %}> {{ event.name }} </a> :- {{ event.start_time }} through {{ event.end_time }}</li> 
+        {% endfor %}
+    </ul>
+{% else %}
+    <p style="font-size: 12px"> <i>This merchant does not seem to have participated in events lately! :(</i></p>
+{% endif %}
+</div>
+{% endblock content %}

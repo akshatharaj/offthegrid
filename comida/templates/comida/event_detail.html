@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h4>{{ object.name }}</h4>
+<p style="width: 700px">
+	<span style="font-size: 13px">{{ object.description }}</span></p>
+<p><i>Starts at: </i> {{ object.start_time }}</p>
+<p><i>Ends at:</i> {{ object.end_time }}</p>
+<p> Vendors: </p>
+
+{% if vendors %}
+  <ul>
+    {% for vendor in vendors %}
+      <li style="font-size: 13px"> <a href={% url 'vendor-detail' vendor.id %}> <p> {{ vendor.name }} </p> 
+    	        <img src={{ vendor.logo }}> </a></li><br/>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p style="font-size: 12px"> <i> Sorry! no information is available about vendors at this time! </i> </p>
+{% endif %}
+{% endblock content %}
