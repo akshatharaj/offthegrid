@@ -23,7 +23,7 @@ def get_vendors_from_description(desc):
 	    			event_vendors.append(vendor)
     except TypeError: 
         # got trash description from facebook, do nothing
-	    pass
+	pass
     return event_vendors
 
 
