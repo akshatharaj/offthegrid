@@ -32,5 +32,3 @@ def get_or_create_vendors(vendors):
     for vendor in vendors:
         Vendor.objects.get_or_create(**vendor)
 
-if __name__=='__main__':
-    get_or_create_vendors(scrape_vendors_from_html(get_vendor_html()))
